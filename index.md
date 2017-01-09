@@ -1,4 +1,6 @@
+<header>
 <meta name="go-import" content="github.com/davidhinkes git https://github.com/davidhinkes">
+</header>
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/davidhinkes/davidhinkes.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
