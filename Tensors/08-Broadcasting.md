@@ -1,6 +1,6 @@
 # Broadcasting
 
-Broadcasting is the mechanism that lets you combine tensors of different shapes in [[02 - Element-wise Operations|element-wise operations]] without manually copying data. It's how a bias vector gets added to every row of a matrix, and how a scalar scales an entire tensor.
+Broadcasting is the mechanism that lets you combine tensors of different shapes in [element-wise operations](02-Element-wise-Operations) without manually copying data. It's how a bias vector gets added to every row of a matrix, and how a scalar scales an entire tensor.
 
 ---
 
@@ -142,4 +142,4 @@ Broadcasting is a **virtual** expansion. The framework uses stride tricks: a siz
 
 ---
 
-Previous: [[07 - Transpose and Reshaping]] | Next: [[09 - Batch Dimensions]]
+Previous: [07 - Transpose and Reshaping](07-Transpose-and-Reshaping) | Next: [09 - Batch Dimensions](09-Batch-Dimensions)

@@ -10,7 +10,7 @@ Matrix-matrix multiplication is the workhorse of deep learning. Every dense laye
 C = A·B        C_ij = Σ_k  A_ik · B_kj       (m×n) = (m×k) · (k×n)
 ```
 
-The shared dimension k is contracted (summed over). Each element C_ij is the [[03 - The Dot Product|dot product]] of row i of **A** with column j of **B**.
+The shared dimension k is contracted (summed over). Each element C_ij is the [dot product](03-The-Dot-Product) of row i of **A** with column j of **B**.
 
 ---
 
@@ -67,7 +67,7 @@ The output matrix contains m×n dot products, each over vectors of length k.
 
 ### 2. Column view (matrix-vector products)
 
-Each column of the output is a [[04 - Matrix-Vector Multiplication|matrix-vector product]]:
+Each column of the output is a [matrix-vector product](04-Matrix-Vector-Multiplication):
 
 ```
 col_j(C) = A · col_j(B)        (m,) = (m×k) · (k,)
@@ -134,4 +134,4 @@ This is GEMM (general matrix-matrix multiply) — a level-3 BLAS operation. It h
 
 ---
 
-Previous: [[04 - Matrix-Vector Multiplication]] | Next: [[06 - The Outer Product]]
+Previous: [04 - Matrix-Vector Multiplication](04-Matrix-Vector-Multiplication) | Next: [06 - The Outer Product](06-The-Outer-Product)

@@ -1,6 +1,6 @@
 # The Outer Product
 
-The outer product is the *opposite* of the [[03 - The Dot Product|dot product]]. Where the dot product takes two vectors and produces a scalar, the outer product takes two vectors and produces a matrix.
+The outer product is the *opposite* of the [dot product](03-The-Dot-Product). Where the dot product takes two vectors and produces a scalar, the outer product takes two vectors and produces a matrix.
 
 ---
 
@@ -44,7 +44,7 @@ The dot product **contracts** a dimension (sums over it). The outer product **ex
 
 ## The outer product as matrix multiplication
 
-The outer product is actually a special case of [[05 - Matrix-Matrix Multiplication|matrix multiplication]]. Treat a as a column vector (m×1) and b as a row vector (1×n):
+The outer product is actually a special case of [matrix multiplication](05-Matrix-Matrix-Multiplication). Treat a as a column vector (m×1) and b as a row vector (1×n):
 
 ```
 a ⊗ b = a · bᵀ       (m×n) = (m×1) · (1×n)
@@ -90,7 +90,7 @@ This sum of outer products *is* a matrix multiplication in disguise:
 dLdW = dLdYᵀ · X       (m×n) = (m×B) · (B×n)
 ```
 
-where rows of **X** are the training examples and columns of **dLdYᵀ** are the per-example gradients. The sum over B (the batch) happens inside the matrix multiply — see [[09 - Batch Dimensions]] for more.
+where rows of **X** are the training examples and columns of **dLdYᵀ** are the per-example gradients. The sum over B (the batch) happens inside the matrix multiply — see [09 - Batch Dimensions](09-Batch-Dimensions) for more.
 
 ---
 
@@ -104,8 +104,8 @@ where rows of **X** are the training examples and columns of **dLdYᵀ** are the
 | Mat-vec | (m×n), (n,) | (m,) | `Σ_j W_ij · x_j` | Yes (j) |
 | Mat-mat | (m×k), (k×n) | (m×n) | `Σ_k A_ik · B_kj` | Yes (k) |
 
-The unifying pattern: multiply corresponding elements, then either sum over an index (contraction) or keep it. [[10 - Tensor Contraction and Einsum]] will make this explicit.
+The unifying pattern: multiply corresponding elements, then either sum over an index (contraction) or keep it. [10 - Tensor Contraction and Einsum](10-Tensor-Contraction-and-Einsum) will make this explicit.
 
 ---
 
-Previous: [[05 - Matrix-Matrix Multiplication]] | Next: [[07 - Transpose and Reshaping]]
+Previous: [05 - Matrix-Matrix Multiplication](05-Matrix-Matrix-Multiplication) | Next: [07 - Transpose and Reshaping](07-Transpose-and-Reshaping)

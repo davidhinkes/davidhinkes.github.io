@@ -106,8 +106,8 @@ The dot product is a special case in a family:
 | Matrix-vector multiply | (m×n) · (n,) | (m,) | n summed |
 | Matrix-matrix multiply | (m×k) · (k×n) | (m×n) | k summed |
 
-See the pattern? In all three, a shared dimension is summed over. The dot product is the rank-1 version. [[04 - Matrix-Vector Multiplication]] is what happens when you compute *m* dot products at once.
+See the pattern? In all three, a shared dimension is summed over. The dot product is the rank-1 version. [04 - Matrix-Vector Multiplication](04-Matrix-Vector-Multiplication) is what happens when you compute *m* dot products at once.
 
 ---
 
-Previous: [[02 - Element-wise Operations]] | Next: [[04 - Matrix-Vector Multiplication]]
+Previous: [02 - Element-wise Operations](02-Element-wise-Operations) | Next: [04 - Matrix-Vector Multiplication](04-Matrix-Vector-Multiplication)

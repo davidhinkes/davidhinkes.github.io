@@ -85,7 +85,7 @@ For a dense layer `Y = X·Wᵀ`:
 dLdW = dLdYᵀ · X       (m×n) = (m×B) · (B×n)
 ```
 
-This single GEMM computes the sum of B [[06 - The Outer Product|outer products]]:
+This single GEMM computes the sum of B [outer products](06-The-Outer-Product):
 
 ```
 dLdW = Σ_b  dLdY_b ⊗ x_b
@@ -116,4 +116,4 @@ For a 5-layer network with width 64 and batch size 128: 5 × 128 × 64 × 8 byte
 
 ---
 
-Previous: [[08 - Broadcasting]] | Next: [[10 - Tensor Contraction and Einsum]]
+Previous: [08 - Broadcasting](08-Broadcasting) | Next: [10 - Tensor Contraction and Einsum](10-Tensor-Contraction-and-Einsum)

@@ -129,4 +129,4 @@ After a transpose or permute, the data may no longer be contiguous in memory (th
 
 ---
 
-Previous: [[06 - The Outer Product]] | Next: [[08 - Broadcasting]]
+Previous: [06 - The Outer Product](06-The-Outer-Product) | Next: [08 - Broadcasting](08-Broadcasting)

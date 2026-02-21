@@ -143,4 +143,4 @@ Einsum implementations are optimized — they find efficient contraction orderin
 
 ---
 
-Previous: [[09 - Batch Dimensions]] | Next: [[11 - Tensors in the Forward Pass]]
+Previous: [09 - Batch Dimensions](09-Batch-Dimensions) | Next: [11 - Tensors in the Forward Pass](11-Tensors-in-the-Forward-Pass)

@@ -1,6 +1,6 @@
 # Tensors in the Forward Pass
 
-Every layer in a neural network is a tensor operation. This lesson traces a complete forward pass through a 2-layer network, showing exactly which operations from [[01 - What is a Tensor|Part 1]] appear where.
+Every layer in a neural network is a tensor operation. This lesson traces a complete forward pass through a 2-layer network, showing exactly which operations from [Part 1](01-What-is-a-Tensor) appear where.
 
 ---
 
@@ -24,7 +24,7 @@ Input batch **X**: (B×3) — B examples, 3 features each.
 Z₁ = X · W₁ᵀ + b₁     (B×4) = (B×3) · (3×4) + (4,)
 ```
 
-This is a [[05 - Matrix-Matrix Multiplication|matrix multiply]] (GEMM) followed by a [[08 - Broadcasting|broadcasted]] bias addition.
+This is a [matrix multiply](05-Matrix-Matrix-Multiplication) (GEMM) followed by a [broadcasted](08-Broadcasting) bias addition.
 
 Worked example with B=2:
 
@@ -52,7 +52,7 @@ Z₁ = [3  -1  2  -1] + [0.1  0.2  0.3  0.4] = [3.1  -0.8  2.3  -0.6]
 H₁ = ReLU(Z₁)       H₁_bi = max(0, Z₁_bi)       (B×4)
 ```
 
-This is a [[02 - Element-wise Operations|element-wise operation]] — no contraction, no shape change.
+This is a [element-wise operation](02-Element-wise-Operations) — no contraction, no shape change.
 
 ```
 H₁ = [3.1   0   2.3   0 ]    (negatives clipped to 0)
@@ -78,8 +78,8 @@ P_bi = exp(Z₂_bi) / Σ_j exp(Z₂_bj)       (B×2)
 ```
 
 Softmax has two sub-operations:
-1. **Element-wise exp**: apply exp to every element — [[02 - Element-wise Operations|element-wise]]
-2. **Normalization**: divide each element by the sum along axis 1 — a reduction (sum) followed by [[08 - Broadcasting|broadcasted]] division
+1. **Element-wise exp**: apply exp to every element — [element-wise](02-Element-wise-Operations)
+2. **Normalization**: divide each element by the sum along axis 1 — a reduction (sum) followed by [broadcasted](08-Broadcasting) division
 
 The sum along axis 1 produces a (B, 1) tensor, which broadcasts back to (B, 2) for the division.
 
@@ -108,7 +108,7 @@ The entire forward pass is: two GEMMs, two broadcast additions, one element-wise
 E = embedding_table[token_ids]     (B×S×d)
 ```
 
-Select rows from a (V×d) matrix by index. Equivalent to multiplying by a one-hot matrix — a [[04 - Matrix-Vector Multiplication|matrix-vector product]] where the vector is one-hot, which just selects a column (see the "column view").
+Select rows from a (V×d) matrix by index. Equivalent to multiplying by a one-hot matrix — a [matrix-vector product](04-Matrix-Vector-Multiplication) where the vector is one-hot, which just selects a column (see the "column view").
 
 ### Layer normalization
 
@@ -119,7 +119,7 @@ X_norm = (X - μ) / σ                  (B, n) — broadcast sub and div
 Y = γ ⊙ X_norm + β                   (B, n) — Hadamard + broadcast add
 ```
 
-Two reductions, two broadcast operations, one [[02 - Element-wise Operations|Hadamard product]].
+Two reductions, two broadcast operations, one [Hadamard product](02-Element-wise-Operations).
 
 ### Dropout
 
@@ -138,8 +138,8 @@ Every layer follows the same pattern:
 1. A **linear operation** (GEMM) that mixes features via weighted sums
 2. A **non-linear operation** (activation, normalization) that acts element-wise or with simple reductions
 
-The linear part does the heavy computation. The non-linear part is cheap but essential — without it, the whole network collapses to a single [[05 - Matrix-Matrix Multiplication|matrix multiply]].
+The linear part does the heavy computation. The non-linear part is cheap but essential — without it, the whole network collapses to a single [matrix multiply](05-Matrix-Matrix-Multiplication).
 
 ---
 
-Previous: [[10 - Tensor Contraction and Einsum]] | Next: [[12 - Tensors in Backpropagation]]
+Previous: [10 - Tensor Contraction and Einsum](10-Tensor-Contraction-and-Einsum) | Next: [12 - Tensors in Backpropagation](12-Tensors-in-Backpropagation)

@@ -1,6 +1,6 @@
 # Attention is All Tensor Ops
 
-The attention mechanism — the core of transformers — is built entirely from operations covered in this course: linear projections ([[05 - Matrix-Matrix Multiplication|matrix multiplies]]), [[03 - The Dot Product|dot products]], [[02 - Element-wise Operations|element-wise operations]], and a softmax. Nothing new. Once you see the tensor shapes, it's straightforward.
+The attention mechanism — the core of transformers — is built entirely from operations covered in this course: linear projections ([matrix multiplies](05-Matrix-Matrix-Multiplication)), [dot products](03-The-Dot-Product), [element-wise operations](02-Element-wise-Operations), and a softmax. Nothing new. Once you see the tensor shapes, it's straightforward.
 
 ---
 
@@ -26,7 +26,7 @@ K = X · W_K       (B, S, d_model) · (d_model, d_k)   → (B, S, d_k)
 V = X · W_V       (B, S, d_model) · (d_model, d_v)   → (B, S, d_v)
 ```
 
-Each is a [[09 - Batch Dimensions|batched]] matrix multiply: the (d_model, d_k) weight matrix is applied independently to every sequence position in every batch. In [[10 - Tensor Contraction and Einsum|einsum]]:
+Each is a [batched](09-Batch-Dimensions) matrix multiply: the (d_model, d_k) weight matrix is applied independently to every sequence position in every batch. In [einsum](10-Tensor-Contraction-and-Einsum):
 
 ```
 Q = einsum("bsd, dk -> bsk", X, W_Q)
@@ -38,13 +38,13 @@ The "d" (d_model) index is contracted. Batch and sequence indices are kept.
 
 ## Step 2: Compute attention scores
 
-How much should token s attend to token t? Measure it with a [[03 - The Dot Product|dot product]] between the query at position s and the key at position t:
+How much should token s attend to token t? Measure it with a [dot product](03-The-Dot-Product) between the query at position s and the key at position t:
 
 ```
 score_st = Q_s · K_t / √d_k
 ```
 
-For all positions at once, this is a [[09 - Batch Dimensions|batched matrix multiply]]:
+For all positions at once, this is a [batched matrix multiply](09-Batch-Dimensions):
 
 ```
 scores = Q · Kᵀ / √d_k     (B, S, S) = (B, S, d_k) · (B, d_k, S) / √d_k
@@ -58,7 +58,7 @@ scores = einsum("bsd, btd -> bst", Q, K) / sqrt(d_k)
 
 The head dimension d_k is contracted — each score is a dot product over d_k. The result is an (S×S) attention matrix per batch: score at (s, t) measures relevance of key t to query s.
 
-The `/√d_k` is a scalar that scales every element — an [[02 - Element-wise Operations|element-wise]] operation. Without it, dot products grow with d_k, pushing softmax into regions with vanishing gradients.
+The `/√d_k` is a scalar that scales every element — an [element-wise](02-Element-wise-Operations) operation. Without it, dot products grow with d_k, pushing softmax into regions with vanishing gradients.
 
 ---
 
@@ -79,7 +79,7 @@ mask: upper-triangular matrix of -∞
 scores = scores + mask     (B, S, S) + (1, S, S)   — broadcast
 ```
 
-The [[08 - Broadcasting|broadcast]] adds -∞ to future positions. After softmax, exp(-∞) = 0 — future tokens get zero weight.
+The [broadcast](08-Broadcasting) adds -∞ to future positions. After softmax, exp(-∞) = 0 — future tokens get zero weight.
 
 ---
 
@@ -134,7 +134,7 @@ K: (B, S, d_model) → reshape → (B, S, H, d_k) → permute → (B, H, S, d_k)
 V: (B, S, d_model) → reshape → (B, S, H, d_v) → permute → (B, H, S, d_v)
 ```
 
-The [[07 - Transpose and Reshaping|reshape]] splits d_model into (H, d_k). The permute moves the head axis to position 1 so it acts as a batch dimension.
+The [reshape](07-Transpose-and-Reshaping) splits d_model into (H, d_k). The permute moves the head axis to position 1 so it acts as a batch dimension.
 
 ### Attention per head
 
@@ -165,7 +165,7 @@ The reshape concatenates all head outputs. The final projection is one more GEMM
 | Step | Operation type | Count |
 |------|---------------|-------|
 | QKV projection | GEMM | 3 (or 1 fused) |
-| Reshape + permute | [[07 - Transpose and Reshaping\|Shape manipulation]] | 3 (free) |
+| Reshape + permute | [Shape manipulation](07---Transpose-and-Reshaping\) | 3 (free) |
 | QKᵀ scores | BMM | 1 |
 | Scale by 1/√d_k | Element-wise | 1 |
 | Causal mask | Broadcast add | 1 (optional) |
@@ -183,4 +183,4 @@ The attention matrix has shape (S, S) — one score for every query-key pair. Co
 
 ---
 
-Previous: [[13 - Convolutions as Tensor Operations]] | Course index: [[00 - Tensor Course Index]]
+Previous: [13 - Convolutions as Tensor Operations](13-Convolutions-as-Tensor-Operations) | Course index: [00 - Tensor Course Index](00-Tensor-Course-Index)

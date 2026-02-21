@@ -1,6 +1,6 @@
 # Convolutions as Tensor Operations
 
-Convolutions look different from dense layers — they have kernels, strides, and spatial structure. But under the hood, every convolution can be reformulated as a [[05 - Matrix-Matrix Multiplication|matrix multiplication]]. Understanding this connection is the key to seeing convolutions through the tensor lens.
+Convolutions look different from dense layers — they have kernels, strides, and spatial structure. But under the hood, every convolution can be reformulated as a [matrix multiplication](05-Matrix-Matrix-Multiplication). Understanding this connection is the key to seeing convolutions through the tensor lens.
 
 ---
 
@@ -23,7 +23,7 @@ Output (3×3):
   = 1·1 + 0·0 + 1·1 + 0·0 + 1·1 + 0·0 + 2·1 + 1·0 + 2·1 = 7
 ```
 
-Each output element is a [[03 - The Dot Product|dot product]] of the flattened kernel (9 elements) with a flattened image patch (9 elements). The kernel slides to produce all H_out × W_out outputs.
+Each output element is a [dot product](03-The-Dot-Product) of the flattened kernel (9 elements) with a flattened image patch (9 elements). The kernel slides to produce all H_out × W_out outputs.
 
 ---
 
@@ -131,7 +131,7 @@ This is the classic space-time tradeoff: im2col uses more memory but converts th
 Modern implementations (cuDNN, etc.) use variants:
 - **Implicit im2col**: compute patch elements on-the-fly without materializing the full matrix
 - **Winograd transforms**: reduce the number of multiplications for small kernels
-- **FFT-based**: convert to frequency domain where convolution becomes element-wise multiplication (the [[02 - Element-wise Operations|Hadamard product]])
+- **FFT-based**: convert to frequency domain where convolution becomes element-wise multiplication (the [Hadamard product](02-Element-wise-Operations))
 
 ---
 
@@ -163,4 +163,4 @@ No cross-channel mixing. Followed by a 1×1 convolution ("pointwise") that does 
 
 ---
 
-Previous: [[12 - Tensors in Backpropagation]] | Next: [[14 - Attention is All Tensor Ops]]
+Previous: [12 - Tensors in Backpropagation](12-Tensors-in-Backpropagation) | Next: [14 - Attention is All Tensor Ops](14-Attention-is-All-Tensor-Ops)

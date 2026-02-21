@@ -75,4 +75,4 @@ This tells you: **W** has shape (m×n), **x** has shape (n,), and the result **y
 
 ---
 
-Next: [[02 - Element-wise Operations]]
+Next: [02 - Element-wise Operations](02-Element-wise-Operations)

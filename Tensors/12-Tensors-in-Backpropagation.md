@@ -45,9 +45,9 @@ dLdW = dLdYᵀ · X      (m×n) = (m×B) · (B×n)
 dLdB = Σ_b dLdY_b     (m,) — column sum over batch
 ```
 
-**dLdX**: The [[07 - Transpose and Reshaping|transpose]] of W appears because the backward pass reverses the forward map. This is a GEMM.
+**dLdX**: The [transpose](07-Transpose-and-Reshaping) of W appears because the backward pass reverses the forward map. This is a GEMM.
 
-**dLdW**: This is the sum of B [[06 - The Outer Product|outer products]], computed as a single GEMM. The batch dimension becomes the contracted dimension.
+**dLdW**: This is the sum of B [outer products](06-The-Outer-Product), computed as a single GEMM. The batch dimension becomes the contracted dimension.
 
 **dLdB**: A reduction (sum) over the batch axis. Each example contributes its gradient, and they're added together.
 
@@ -101,7 +101,7 @@ Backward:
 dLdZ_bi = dLdH_bi · 𝟙(Z_bi > 0)       element-wise
 ```
 
-where 𝟙(Z_bi > 0) is 1 if Z_bi was positive, 0 otherwise. This is a [[02 - Element-wise Operations|Hadamard product]] between the upstream gradient and the derivative mask.
+where 𝟙(Z_bi > 0) is 1 if Z_bi was positive, 0 otherwise. This is a [Hadamard product](02-Element-wise-Operations) between the upstream gradient and the derivative mask.
 
 The derivative of ReLU is a step function: 1 where the input was positive, 0 where it was negative. The gradient flows through unchanged where the neuron "fired," and is zeroed out where it didn't.
 
@@ -148,7 +148,7 @@ The backward pass uses the same BLAS operations as the forward pass, with differ
 
 ## Full backward pass for the 2-layer network
 
-Using the same architecture from [[11 - Tensors in the Forward Pass]]:
+Using the same architecture from [11 - Tensors in the Forward Pass](11-Tensors-in-the-Forward-Pass):
 
 ```
 Forward:  X → Z₁ → H₁ → Z₂ → P → Loss
@@ -167,4 +167,4 @@ Seven operations: 3 GEMMs, 2 reductions, 1 Hadamard, 1 subtraction. All are tens
 
 ---
 
-Previous: [[11 - Tensors in the Forward Pass]] | Next: [[13 - Convolutions as Tensor Operations]]
+Previous: [11 - Tensors in the Forward Pass](11-Tensors-in-the-Forward-Pass) | Next: [13 - Convolutions as Tensor Operations](13-Convolutions-as-Tensor-Operations)

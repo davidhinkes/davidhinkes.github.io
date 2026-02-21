@@ -1,6 +1,6 @@
 # Element-wise Operations
 
-Element-wise operations apply independently to each corresponding pair of elements. Both inputs must have the same shape (or be [[08 - Broadcasting|broadcastable]] to the same shape), and the output has that same shape.
+Element-wise operations apply independently to each corresponding pair of elements. Both inputs must have the same shape (or be [broadcastable](08-Broadcasting) to the same shape), and the output has that same shape.
 
 ---
 
@@ -72,7 +72,7 @@ This is the source of most confusion:
 | Hadamard product | A ⊙ B | Multiply matching elements | (m×n) ⊙ (m×n) → (m×n) |
 | Matrix multiplication | A·B | Dot products of rows with columns | (m×k)·(k×n) → (m×n) |
 
-They are **completely different operations**. The Hadamard product requires the same shape and produces the same shape. Matrix multiplication requires the inner dimensions to match and *contracts* (sums over) that shared dimension — see [[05 - Matrix-Matrix Multiplication]].
+They are **completely different operations**. The Hadamard product requires the same shape and produces the same shape. Matrix multiplication requires the inner dimensions to match and *contracts* (sums over) that shared dimension — see [05 - Matrix-Matrix Multiplication](05-Matrix-Matrix-Multiplication).
 
 Concrete example showing they give different results:
 
@@ -93,15 +93,15 @@ Different operations, different results. When a paper or framework says "multipl
 
 ## Element-wise with scalars vs. vectors vs. matrices
 
-Sometimes one operand is smaller and gets "stretched" to match. This is called [[08 - Broadcasting]]:
+Sometimes one operand is smaller and gets "stretched" to match. This is called [08 - Broadcasting](08-Broadcasting):
 
 ```
 A + b:   (m×n) + (n,)  →  add b to every row of A
 A · α:   (m×n) · ()    →  multiply every element by α
 ```
 
-We'll cover the full rules in [[08 - Broadcasting]]. For now, just know that element-wise operations can work on mismatched shapes under specific, predictable rules.
+We'll cover the full rules in [08 - Broadcasting](08-Broadcasting). For now, just know that element-wise operations can work on mismatched shapes under specific, predictable rules.
 
 ---
 
-Previous: [[01 - What is a Tensor]] | Next: [[03 - The Dot Product]]
+Previous: [01 - What is a Tensor](01-What-is-a-Tensor) | Next: [03 - The Dot Product](03-The-Dot-Product)
