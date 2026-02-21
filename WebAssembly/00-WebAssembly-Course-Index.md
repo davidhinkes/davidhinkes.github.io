@@ -28,6 +28,10 @@ A course on how WebAssembly works, from binary format through running C and Go p
 11. [11 - Passing Data Across the Boundary](11-Passing-Data) — Strings, structs, and shared memory.
 12. [12 - Tables and Indirect Calls](12-Tables-and-Indirect-Calls) — Function pointers, callbacks, dynamic dispatch.
 
+## Part 5: Context and Comparisons
+
+13. [13 - Comparison with Similar Technologies](13-Comparison-with-Similar-Technologies) — JVM bytecode, CLR/CIL, LLVM IR, asm.js, and NaCl side by side.
+
 ---
 
 ## Quick reference
